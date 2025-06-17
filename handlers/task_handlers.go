@@ -23,7 +23,7 @@ func (h *TaskHandler) CreateTask(c *gin.Context) {
 
 	task := &store.Task{
 		ID:                id,
-		Status:            "In progress",
+		Status:            "in_progress",
 		CreatedAt:         time.Now(),
 		EstimatedDuration: duration,
 	}
@@ -54,7 +54,7 @@ func (h *TaskHandler) GetTask(c *gin.Context) {
 		}
 		c.JSON(http.StatusOK, gin.H{
 			"status":    task.Status,
-			"time_left": timeLeft.Seconds(),
+			"time_left": timeLeft.Minutes(),
 		})
 		return
 	}
